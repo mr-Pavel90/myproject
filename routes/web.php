@@ -22,7 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// user
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/user-form', function () {
+    return view('users.user_form');
+});
+Route::post('/user', [UserController::class, 'store'])->name('store.user');
 
 Route::get('/nails', [NailsController::class, 'index'])->middleware('role:admin');
 Route::get('/users-nails', [NailsController::class, 'getUsersNails']);

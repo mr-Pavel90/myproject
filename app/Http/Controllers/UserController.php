@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Services\MailService;
+use App\Services\UserCreatedMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -19,8 +24,22 @@ class UserController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
-        User::create($data);
+        $user = User::create($data);
 
-        return redirect()->route('users.index');
+        try {
+                 Mail::to($user->email)->send(
+                    new UserCreatedMail($user->toArray())
+                );
+
+                // ✅ sucess send
+                return redirect()
+                    ->back()
+                    ->with('success', '✅ user successfully created!');
+            } catch (\Exception $e) {
+                // ⚠️ bug to send
+                return redirect()
+                    ->back()
+                    ->with('error', '❌ bug to send mail: ' . $e->getMessage());
+        }
     }
 }
