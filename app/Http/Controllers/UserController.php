@@ -42,4 +42,19 @@ class UserController extends Controller
                     ->with('error', '❌ bug to send mail: ' . $e->getMessage());
         }
     }
+
+    public function getUser(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer|min:1',
+        ]);
+
+        $user = User::find($request->id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        return view('users.one_user', compact('user'));
+    }
 }

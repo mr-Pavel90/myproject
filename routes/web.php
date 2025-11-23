@@ -24,6 +24,10 @@ Route::get('/', function () {
 
 // user
 Route::get('/users', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'getUser'])->name('get.user');
+Route::get('/get-user-form', function () {
+    return view('users.get_user_form');
+})->middleware('role:admin');
 Route::get('/user-form', function () {
     return view('users.user_form');
 });

@@ -1,18 +1,18 @@
 @component('mail::message')
-# Добро пожаловать, {{ $user['name'] }}!
+# welcome ser, {{ $user['name'] }}!
 
-Ваш аккаунт успешно создан.
+your account created successfull.
 
 **Email:** {{ $user['email'] }}
 
 @if(!empty($user['phone']))
-**Телефон:** {{ $user['phone'] }}
+**Phone:** {{ $user['phone'] }}
 @endif
 
 @component('mail::button', ['url' => url('/login')])
-Войти
+Input
 @endcomponent
 
-Спасибо,<br>
+Thanks Ser,<br>
 {{ config('app.name') }}
 @endcomponent

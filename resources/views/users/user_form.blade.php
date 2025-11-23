@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <label for="phone" class="block text-gray-700 font-medium mb-1">Телефон:</label>
+        <label for="phone" class="block text-gray-700 font-medium mb-1">phone:</label>
         <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
                 class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition p-2.5">
         @error('phone')
