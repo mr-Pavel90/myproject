@@ -8,6 +8,6 @@
 </p>
 
 1. Docker engine start
-2. docker ps - terminal
-3. docker compose exec app bash - terminal
+2. docker ps
+3. docker compose exec app bash
 4. php artisan serve --host=0.0.0.0 --port=8000
