@@ -7,9 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-1. Docker engine start
-2. docker ps
-3. docker compose exec app bash
-4. composer install
-5. php artisan serve --host=0.0.0.0 --port=8000
-6. go to browser and write http://127.0.0.1:8000
+1. clone project
+2. Docker engine start
+3. composer install
+4. docker compose up -d
+5. docker ps
+6. docker compose exec app bash
+7. copy .env-example to .env
+8. php artisan key:generate
+9. php artisan migrate
+10. php artisan serve --host=0.0.0.0 --port=8000
+11. go to browser and write http://127.0.0.1:8000
