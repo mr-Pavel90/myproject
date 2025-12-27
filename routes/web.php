@@ -6,6 +6,7 @@ use App\Http\Controllers\NailsController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MagazineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/magazine', [MagazineController::class, 'index'])
+    ->name('magazine');

@@ -64,6 +64,15 @@
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
+                @auth
+                    <div class="mt-3 flex justify-center">
+                        <div style="background-color:#9191e1; border-radius:5px;">
+                            <a href="{{ route('magazine') }}" style="margin:5px; display:inline-block;">
+                                Magazine
+                            </a>
+                        </div>
+                    </div>
+                @endauth
             </div>
         </div>
     </body>
