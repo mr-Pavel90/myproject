@@ -8,7 +8,7 @@ use App\Services\MailService;
 
 class MailController extends Controller
 {
- public function send(Request $request)
+    public function send(Request $request)
     {
         $request->validate([
             'email'   => 'required|email',

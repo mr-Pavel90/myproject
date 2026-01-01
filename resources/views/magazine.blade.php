@@ -16,30 +16,32 @@
                 @endif
 
                 <div class="p-5 flex flex-col flex-1">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ $item->name ?? 'Название отсутствует' }}</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">{{ $item->name ?? 'title missing' }}</h2>
 
-                    <p class="text-gray-600 mb-4 flex-1">{{ $item->description ?? 'Описание отсутствует' }}</p>
+                    <p class="text-gray-600 mb-4 flex-1">{{ $item->description ?? 'description missing' }}</p>
 
-                    <div class="flex items-center space-x-4 mt-3">
+                    <div class="flex items-center space-x-4 mt-3"  style="display: flex;">
 
-                    <span class="text-2xl font-extrabold px-4 py-2 rounded-lg shadow text-white"
-                        style="background-color: #16a34a !important;">
-                        ${{ number_format($item->price, 2) }}
-                    </span>
+                        <span class="text-2xl font-extrabold px-4 py-2 rounded-lg shadow text-white"
+                            style="background-color: #16a34a !important;">
+                            ${{ number_format($item->price, 2) }}
+                        </span>
 
-                    <a href="#"
-                    class="inline-block font-semibold px-5 py-2 rounded-lg shadow text-white no-underline"
-                    style="background-color: #22c55e !important; text-decoration: none !important; margin-left: 5px;">
-                        Buy
-                    </a>
-                </div>
+                        <form action="{{ route('buy.item', $item->id) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" style="background-color: #16a34a !important; margin-left: 10px;">
+                                Buy
+                            </button>
+                        </form>
+                    </div>
 
                     <p class="text-sm text-gray-500 mb-2" style='margin-top: 15px;'>
-                        Category: <span class="font-medium">{{ $item->category->name ?? 'Не указано' }}</span>
+                        Category: <span class="font-medium">{{ $item->category->name ?? 'not specified' }}</span>
                     </p>
 
                     <div class="text-sm text-gray-500">
-                        Tegs:
+                        Tags:
                         @if(!empty($item->tags))
                             @foreach($item->tags as $tag)
                                 <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full mr-1 mt-1">
@@ -47,7 +49,7 @@
                                 </span>
                             @endforeach
                         @else
-                            Нет тегов
+                            no tags
                         @endif
                     </div>
                 </div>

@@ -58,5 +58,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Magazine
 Route::get('/magazine', [MagazineController::class, 'index'])
-    ->name('magazine');
+    ->name('magazine')->middleware('role:admin');
+Route::post('/buy/{item}', [MagazineController::class, 'buy'])
+    ->name('buy.item')->middleware('role:admin');
