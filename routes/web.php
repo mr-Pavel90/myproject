@@ -7,6 +7,7 @@ use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MagazineController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,9 @@ Route::get('/magazine', [MagazineController::class, 'index'])
     ->name('magazine')->middleware('role:admin');
 Route::post('/buy/{item}', [MagazineController::class, 'buy'])
     ->name('buy.item')->middleware('role:admin');
+
+// Posts
+Route::get('/posts', [PostController::class, 'index'])
+    ->name('posts');
+Route::post('/posts', [PostController::class, 'store'])
+    ->name('posts.store');

@@ -71,6 +71,11 @@
                                 Magazine
                             </a>
                         </div>
+                        <div style="background-color:green; border-radius:5px; margin-left:10px;">
+                            <a href="{{ route('posts') }}" style="margin:5px; display:inline-block;">
+                                Posts
+                            </a>
+                        </div>
                     </div>
                 @endauth
             </div>

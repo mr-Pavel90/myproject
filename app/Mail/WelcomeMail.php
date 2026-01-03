@@ -19,7 +19,7 @@ class WelcomeMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Добро пожаловать в наше приложение!')
+        return $this->subject('Welcome to our app!')
                     ->markdown('emails.welcome');
     }
 }
