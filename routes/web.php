@@ -8,6 +8,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +69,12 @@ Route::post('/buy/{item}', [MagazineController::class, 'buy'])
 // Posts
 Route::get('/posts', [PostController::class, 'index'])
     ->name('posts');
+    
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])
+    ->name('comments.store');
+
 Route::post('/posts', [PostController::class, 'store'])
     ->name('posts.store');
+
+Route::get('/posts/{post}', [PostController::class, 'show'])
+    ->name('posts.show');

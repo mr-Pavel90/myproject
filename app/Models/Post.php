@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Post extends Model
 {
@@ -10,4 +11,9 @@ class Post extends Model
         'description',
         'color',
     ];
-}
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+}   

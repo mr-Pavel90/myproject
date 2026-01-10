@@ -34,4 +34,15 @@ class PostController extends Controller
 
         return redirect()->route('posts');
     }
+
+    public function show(Post $post)
+    {
+        $post->load([
+            'comments' => function ($query) {
+                $query->latest()->with('users');
+            }
+        ]);
+
+        return view('show', compact('post'));
+    }
 }

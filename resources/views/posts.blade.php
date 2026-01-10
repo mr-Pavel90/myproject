@@ -5,7 +5,7 @@
 
     <h1 class="text-3xl font-bold mb-6">Posts</h1>
 
-    {{-- Если постов нет --}}
+    {{-- If there are no posts --}}
     @if($posts->isEmpty())
         <div class="bg-yellow-100 text-yellow-800 p-4 rounded mb-6">
             There are no posts yet!
@@ -19,8 +19,11 @@
                     @elseif($post->color === 'red') bg-danger bg-opacity-25
                     @else bg-light
                     @endif
-                ">
-                    <p style="font-weight: bold;">{{ $post->description }}</p>
+                " style="margin-bottom: 10px;">
+                    <a href="{{ route('posts.show', $post) }}"
+                        class="font-bold text-dark d-block underline">
+                            {{ $post->description }}
+                    </a>
                     <small class="text-gray-600">
                         {{ $post->created_at->format('d.m.Y H:i') }}
                     </small>
@@ -29,13 +32,13 @@
         </div>
     @endif
 
-    {{-- Кнопка показать форму --}}
-    <button onclick="toggleForm()" class="btn btn-primary" style="margin-top: 15px;">
+    {{-- Button show form --}}
+    <button type="button" onclick="toggleForm()" class="btn btn-primary">
         Add new Post
     </button>
 
-    {{-- Форма (скрыта по умолчанию) --}}
-    <div id="createPostForm" class="d-none mt-4">
+    {{-- Form (hidden by default) --}}
+    <div id="createPostForm" hidden class="mt-4">
         <form method="POST" action="{{ route('posts.store') }}">
             @csrf
 
@@ -64,9 +67,9 @@
 
 <script>
     function toggleForm() {
-        document
-            .getElementById('createPostForm')
-            .classList.toggle('d-none');
+        const form = document.getElementById('createPostForm');
+        form.hidden = !form.hidden;
     }
 </script>
+
 @endsection
